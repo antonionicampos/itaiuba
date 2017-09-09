@@ -112,12 +112,12 @@ def getQuadrante(numero):
 	numeroStr = str(numero)
 	if len(numeroStr) > 1:
 		if (numero <= 30 ):
-			if (int(numeroStr[1]) < 6) and (int(numeroStr[1]) <> 0):
+			if (int(numeroStr[1]) < 6) and (int(numeroStr[1]) != 0):
 				quadrante = 1
 			else:
 				quadrante = 2
 		if (numero <= 60 ) and (numero > 30 ):
-			if (int(numeroStr[1]) < 5) and (int(numeroStr[1]) <> 0):
+			if (int(numeroStr[1]) < 5) and (int(numeroStr[1]) != 0):
 				quadrante = 3
 			else:
 				quadrante = 4
