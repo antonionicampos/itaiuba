@@ -26,24 +26,6 @@ def getFibonacci(numero=1):
 			break
 		f.append(fibbo)
 	return f
-def extrairJogosPlanilha(filename='megasena.xlsx'):
-	"""
-	Extrai todos os jogos da planilha da Megasena.xlsx
-	Parametros:
-		filename - Nome do arquivo da planilha .xlsx
-	Retorna:
-		jogos - Lista com todos os jogos da Megasena (ex: [1, 32, 13, 33, 41, 5, ...])
-	"""
-	wb = load_workbook(filename)
-	ws = wb.active
-	jogos = []
-	for lin in ws.rows:
-		if (lin[2].value is not None) and (lin[0].value <> 'Concurso'):
-			jogo = [int(lin[2].value), int(lin[3].value), int(lin[4].value),
-					int(lin[5].value), int(lin[6].value), int(lin[7].value)]
-			jogos.extend(jogo)
-
-	return jogos
 
 def contarOcorrencias(jogos, numeros):
 	"""
