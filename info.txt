@@ -1,0 +1,17 @@
+Algoritmo do Panga
+
+1. 2 números nas laterais e 4 números no centro
+2. Não jogar 3 números ou mais na horizontal ou vertical
+3. Separar o volante em quadrantes
+4. 3 números pares e 3 números impares
+
+Preços:
+6 números - R$ 3.50
+7 números - R$ 24.50
+8 números - R$ 98.00
+9 números - R$ 294.00
+
+Bruno Notas:
+1. 
+
+Antonioni Notas:
