@@ -1,4 +1,5 @@
 from jogo import Jogo
+from volante import Volante
 from openpyxl import load_workbook
 
 class Jogos:
@@ -88,6 +89,23 @@ class Jogos:
 				dic[num] = (contador / float(len(listaDeNumeros))) * 100
 		return dic
 
+	def ocorrenciasPorQuadrante(self, percentual=False):
+		lista = [0, 0 ,0 ,0]
+		for jogos in self.getSequenciaJogos():
+			volante = Volante(aposta=jogos)
+			quadrantes = volante.getQuadrante()
+			for n in range(1, 5):
+				for quadrante in quadrantes:
+					if quadrante == n:
+						lista[n-1] = lista[n-1] + 1
+		if percentual:
+			lista[0] = (lista[0] / float(len(self.getSequenciaJogos()) * 6)) * 100.0
+			lista[1] = (lista[1] / float(len(self.getSequenciaJogos()) * 6)) * 100.0
+			lista[2] = (lista[2] / float(len(self.getSequenciaJogos()) * 6)) * 100.0
+			lista[3] = (lista[3] / float(len(self.getSequenciaJogos()) * 6)) * 100.0
+		return lista
+
+
 	def ocorrenciaDosNumerosNumaListaDeJogos(self, listaDeJogos, percentual=False):
 		"""
 		Compara a (self)Lista de Jogos com outra listaDeJogos e retorna a recorrencia dos numeros contidos nelas
@@ -143,9 +161,6 @@ class Jogos:
 			dic['par'] = (dic['par'] / (len(self.jogos) * 6.0)) * 100
 			dic['impar'] = (dic['impar'] / (len(self.jogos) * 6.0)) * 100
 		return dic
-
-
-
 
 
 
