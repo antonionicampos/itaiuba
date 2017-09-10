@@ -17,15 +17,3 @@ def getFibonacci(numero=1):
 			break
 		f.append(fibo)
 	return f
-
-def getNumerosBordaVolante():
-	numeros = list(range(1,11))
-	numeros.extend([11,21,31,41,20,30,40,50])
-	numeros.extend(range(51,61))
-	numeros = list(set(numeros))
-	return numeros
-
-def getNumerosCentroVolante():
-	numeros = list(range(1,60))
-	numeros = list(set(numeros) - set(getNumerosBordaVolante()))
-	return numeros
