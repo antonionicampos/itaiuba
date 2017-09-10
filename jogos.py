@@ -75,11 +75,19 @@ class Jogos:
 		for jogo in self.jogos:
 			jogoSelecionado.extend(jogo.getNumeros())
 			i = i + 1
+			num_recorrencias = 0
 			if (i == numJogosSeguidos):
-				num_recorrencias = len(jogoSelecionado) - len(set(jogoSelecionado))
+				for num in list(set(jogoSelecionado)):
+					contador = 0
+					for n in jogoSelecionado:
+						if num == n:
+							contador = contador + 1
+					if contador == numJogosSeguidos:
+						num_recorrencias = num_recorrencias + 1
+				
 				dic[num_recorrencias] = dic[num_recorrencias] + 1
-				jogoSelecionado = []
-				i = 0
+				del jogoSelecionado[0:6]
+				i = numJogosSeguidos - 1
 		return dic
 
 
