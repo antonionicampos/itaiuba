@@ -16,8 +16,23 @@ class Jogos:
 			listaNum.extend(jogo.getNumeros())
 		return list(set(listaNum))
 
-	def getJogos(self):
-		return self.jogos
+	def getSequenciaJogos(self, numeroJogos='all', asc=True):
+		if numeroJogos == 'all':
+			return self.jogos
+		else:
+			if numeroJogos > len(self.jogos):
+				numeroJogos = len(self.jogos)
+			lista = self.jogos
+			if not asc:
+				lista.reverse()
+			i = 0
+			jogos = []
+			for jogo in lista:
+				i = i + 1
+				jogos.append(jogo)
+				if i == numeroJogos:
+					return jogos
+					break
 
 	def extrairJogosPlanilha(self, filename):
 		"""
@@ -59,13 +74,13 @@ class Jogos:
 		dic = {}
 		for num in self.getNumeros():
 			contador = 0
-			for jogo in listaDeJogos.getJogos():
+			for jogo in listaDeJogos.getSeuqenciaJogos():
 				for n in jogo.getNumeros():
 					if num == n:
 						contador = contador + 1
 			dic[num] = contador
 			if percentual:
-				dic[num] = (contador / float(len(listaDeJogos.getJogos()) * 6)) * 100
+				dic[num] = (contador / float(len(listaDeJogos.getSequenciaJogos()) * 6)) * 100
 		return dic
 
 	def repeticoesPorJogosSeguidos(self, numJogosSeguidos):
@@ -91,6 +106,9 @@ class Jogos:
 		return dic
 
 	def getParesImpares(self, percentual=False):
+		"""
+		Retorna um dicioanrio com a quantidade ou o percentual de numeros pares e impares no grupo de jogos.
+		"""
 		dic = {'par' : 0, 'impar' : 0 }
 		for jogo in self.jogos:
 			dic['par'] = dic['par'] + jogo.getParesImpares()['par']
