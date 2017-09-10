@@ -17,6 +17,10 @@ class Jogos:
 		return list(set(listaNum))
 
 	def getSequenciaJogos(self, numeroJogos='all', asc=True):
+		"""
+		Retorna uma sequencia de jogos especifica, com o numero de jogos a ser extraido (numeroJogos) 
+		e se sao do inicio da lista (asc=True) ou do final (asc=False)
+		"""
 		if numeroJogos == 'all':
 			return self.jogos
 		else:
@@ -56,8 +60,14 @@ class Jogos:
 
 		return jogos
 
-	def ocorrenciaDosNumeros(self, listaDeNumeros, percentual=False):
+	def ocorrenciaDosNumeros(self, listaDeNumeros='all', percentual=False):
+		"""
+			Retorna um dicionario com as ocorrencias dos numeros em uma lista de numeros ou as ocorrencias
+			dentro dos jogos que o compoem
+		"""
 		dic = {}
+		if listaDeNumeros == 'all':
+			listaDeNumeros = self.getNumeros()
 		for num in listaDeNumeros:
 			contador = 0
 			for jogo in self.jogos:
@@ -71,10 +81,15 @@ class Jogos:
 		return dic
 
 	def ocorrenciaDosNumerosNumaListaDeJogos(self, listaDeJogos, percentual=False):
+		"""
+		Compara a (self)Lista de Jogos com outra listaDeJogos e retorna a recorrencia dos numeros contidos nelas
+
+		"""
+
 		dic = {}
 		for num in self.getNumeros():
 			contador = 0
-			for jogo in listaDeJogos.getSeuqenciaJogos():
+			for jogo in listaDeJogos.getSequenciaJogos():
 				for n in jogo.getNumeros():
 					if num == n:
 						contador = contador + 1
@@ -84,6 +99,9 @@ class Jogos:
 		return dic
 
 	def repeticoesPorJogosSeguidos(self, numJogosSeguidos):
+		"""
+		Conta quantas vezes se repetiu numeros em sequencias de jogos combinados 2 a 2... 3 a 3...(numJogosSeguidos)
+		"""
 		jogoSelecionado = []
 		dic = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
 		i = 0
