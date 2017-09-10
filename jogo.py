@@ -8,3 +8,27 @@ class Jogo:
 
 	def getNumeros(self):
 		return self.numeros
+
+	def getQuadrante(self):
+		"""
+		Funcao retorna em que quadrante do volante o numero se encontra
+		"""
+		quadrante = []
+		for numero in self.numeros:
+			if (numero > 0) and (numero <= 5):
+				quadrante.append(1)
+			elif(numero <= 9):
+				quadrante.append(2)
+			numeroStr = str(numero)
+			if len(numeroStr) > 1:
+				if (numero <= 30 ):
+					if (int(numeroStr[1]) < 6) and (int(numeroStr[1]) != 0):
+						quadrante.append(1)
+					else:
+						quadrante.append(2)
+				if (numero <= 60 ) and (numero > 30 ):
+					if (int(numeroStr[1]) < 6) and (int(numeroStr[1]) != 0):
+						quadrante.append(3)
+					else:
+						quadrante.append(4)
+		return quadrante
