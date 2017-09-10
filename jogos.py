@@ -68,3 +68,21 @@ class Jogos:
 				dic[num] = (contador / float(len(listaDeJogos.getJogos()) * 6)) * 100
 		return dic
 
+	def repeticoesPorJogosSeguidos(self, numJogosSeguidos):
+		jogoSelecionado = []
+		dic = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
+		i = 0
+		for jogo in self.jogos:
+			jogoSelecionado.extend(jogo.getNumeros())
+			i = i + 1
+			if (i == numJogosSeguidos):
+				num_recorrencias = len(jogoSelecionado) - len(set(jogoSelecionado))
+				dic[num_recorrencias] = dic[num_recorrencias] + 1
+				jogoSelecionado = []
+				i = 0
+
+
+
+
+
+
