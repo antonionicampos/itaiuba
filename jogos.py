@@ -99,10 +99,8 @@ class Jogos:
 					if quadrante == n:
 						lista[n-1] = lista[n-1] + 1
 		if percentual:
-			lista[0] = (lista[0] / float(len(self.getSequenciaJogos()) * 6)) * 100.0
-			lista[1] = (lista[1] / float(len(self.getSequenciaJogos()) * 6)) * 100.0
-			lista[2] = (lista[2] / float(len(self.getSequenciaJogos()) * 6)) * 100.0
-			lista[3] = (lista[3] / float(len(self.getSequenciaJogos()) * 6)) * 100.0
+			for i in range(0, 4):
+				lista[i] = (lista[i] / float(len(self.getSequenciaJogos()) * 6)) * 100.0
 		return lista
 
 
