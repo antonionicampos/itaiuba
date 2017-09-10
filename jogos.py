@@ -16,10 +16,18 @@ class Jogos:
 			listaNum.extend(jogo.getNumeros())
 		return list(set(listaNum))
 
+	def addJogo(self, jogo):
+		self.jogos.append(jogo)
+
 	def getSequenciaJogos(self, numeroJogos='all', asc=True):
 		"""
 		Retorna uma sequencia de jogos especifica, com o numero de jogos a ser extraido (numeroJogos) 
 		e se sao do inicio da lista (asc=True) ou do final (asc=False)
+		Por padrao retorna todos os jogos de forma ascendente
+		Parametros:
+			numeroJogos - Quantidade de jogos a ser extraido da sequencia
+		retorna:
+			jogos - Lista com sequencia de jogos extraidos (ex: [[1, 32, 13, 33, 41, 5], ...])
 		"""
 		if numeroJogos == 'all':
 			return self.jogos
