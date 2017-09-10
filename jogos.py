@@ -80,6 +80,7 @@ class Jogos:
 				dic[num_recorrencias] = dic[num_recorrencias] + 1
 				jogoSelecionado = []
 				i = 0
+		return dic
 
 
 
