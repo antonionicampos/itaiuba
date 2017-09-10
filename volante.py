@@ -51,3 +51,14 @@ class volante:
 					else:
 						quadrante.append(4)
 		return quadrante
+
+	def getAcertos(self, jogo):
+		contador = 0
+		for num_sorteado in jogo.getNumeros():
+			for num_apostado in self.aposta:
+				if num_apostado == num_sorteado:
+					contador = contador + 1
+		return contador
+
+
+
