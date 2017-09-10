@@ -90,6 +90,16 @@ class Jogos:
 				i = numJogosSeguidos - 1
 		return dic
 
+	def getParesImpares(self, percentual=False):
+		dic = {'par' : 0, 'impar' : 0 }
+		for jogo in self.jogos:
+			dic['par'] = dic['par'] + jogo.getParesImpares()['par']
+			dic['impar'] = dic['impar'] + jogo.getParesImpares()['impar']
+		if percentual:
+			dic['par'] = (dic['par'] / (len(self.jogos) * 6.0)) * 100
+			dic['impar'] = (dic['impar'] / (len(self.jogos) * 6.0)) * 100
+		return dic
+
 
 
 
