@@ -32,3 +32,16 @@ class Jogo:
 					else:
 						quadrante.append(4)
 		return quadrante
+	def getParesImpares(self, percentual=False):
+		par = 0
+		impar = 0
+		for num in self.getNumeros():
+				if num % 2 == 0:
+					par = par + 1
+				else:
+					impar = impar + 1
+		if percentual:
+			par = (par / 6.0) * 100
+			impar = (impar / 6.0) * 100
+		dic = {'par': par, 'impar': impar}
+		return dic
