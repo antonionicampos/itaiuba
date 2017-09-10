@@ -1,9 +1,9 @@
 Algoritmo do Panga
 
-1. 2 números nas laterais e 4 números no centro
+1. 2 números nas laterais e 4 números no centro - Algoritimo escrito ainda nao comprovado
 2. Não jogar 3 números ou mais na horizontal ou vertical
-3. Separar o volante em quadrantes
-4. 3 números pares e 3 números impares
+3. Separar o volante em quadrantes - Algoritmo escrito
+4. 3 números pares e 3 números impares - Algoritmo escrito..Historicamente comprovado, mas totalmente divergente se analisado jogo a jogo.
 
 Preços:
 6 números - R$ 3.50
