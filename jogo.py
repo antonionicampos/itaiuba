@@ -6,5 +6,5 @@ class Jogo:
 		# numConcurso: numero do concurso
 		self.numConcurso = numConcurso
 
-	def getNumbers(self):
+	def getNumeros(self):
 		return self.numeros
