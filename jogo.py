@@ -9,6 +9,9 @@ class Jogo:
 	def getNumeros(self):
 		return self.numeros
 
+	def getConcurso(self):
+		return self.numConcurso
+		
 	def getQuadrante(self):
 		"""
 		Funcao retorna em que quadrante do volante o numero se encontra
@@ -32,7 +35,11 @@ class Jogo:
 					else:
 						quadrante.append(4)
 		return quadrante
+
 	def getParesImpares(self, percentual=False):
+		"""
+		Retorna o quantidade de numeros pares e impares no jogo.
+		"""
 		par = 0
 		impar = 0
 		for num in self.getNumeros():
