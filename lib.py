@@ -1,16 +1,7 @@
-from openpyxl import load_workbook
 import itertools
 from sets import Set
 
-def getNumeros():
-	return list(range(1, 61))
 
-def contarNumero(jogos, numero):
-	contador = 0
-	for valor in jogos:
-		if(valor == numero):
-			contador = contador + 1
-	return contador
 def getFibonacci(numero=1):
 	"""
 	Retorna a sequencia de fibonacci para o numero de entrada
@@ -21,105 +12,20 @@ def getFibonacci(numero=1):
 	f.append(1*numero)
 	f.append(f[0])
 	for i in range(2, 10):
-		fibbo = f[i-1] + f[i-2]
-		if fibbo > 60:
+		fibo = f[i-1] + f[i-2]
+		if fibo > 60:
 			break
-		f.append(fibbo)
+		f.append(fibo)
 	return f
 
-def contarOcorrencias(jogos, numeros):
-	"""
-	Calcula o percentual de ocorrencia de cada numero da Megasena
-	Parametros:
-		jogos - Lista com todos os jogos da Megasena (ex: [1, 32, 13, 33, 41, 5, ...])
-	Retorna:
-		valores_per - Dicionario com cada numero da Megasena (string) com seu respectivo percentual (float)
-		(Ex.: {'1': 1.453456, '2': 1.783241, ...})
-	"""
-	tamanho_jogos = float(len(jogos))
-	valores_per = {}
+def getNumerosBordaVolante():
+	numeros = list(range(1,11))
+	numeros.extend([11,21,31,41,20,30,40,50])
+	numeros.extend(range(51,61))
+	numeros = list(set(numeros))
+	return numeros
 
-	for num in numeros:
-		contar_ocorrencia = contarNumero(jogos, num)
-		valores_per[str(num)] = ((contar_ocorrencia / tamanho_jogos) * 100.0)
-
-	return valores_per
-
-def ocorrenciasOrdenadas(valores_per, jogos):
-	"""
-	
-	"""
-	tamanho_jogos = float(len(jogos))
-	valores_per_ordenados = sorted(valores_per, key=valores_per.get, reverse=True)
-	percentuais_ordenados = []
-	for item in valores_per_ordenados:
-		ocorr = contarNumero(jogos, int(item))
-		percentuais_ordenados.append(valores_per[item])
-		print('{:2}: {:.4f}% -> Numero de Ocorrencias: {:d} / {:d}'.format(item, valores_per[item], ocorr, int(tamanho_jogos)))
-
-	return valores_per_ordenados, percentuais_ordenados
-
-def jogo(jogos, numDoConcurso):
-	return jogos[(6*(numDoConcurso-1)):(6*(numDoConcurso-1)+6)]
-
-def repeticoesPorJogosSeguidos(jogos, numJogosSeguidos):
-	repeticoes_numeros_jogos = []
-	qnt_de_jogos_geral = int (len(jogos) / 6)
-	for num_jogo in range(numJogosSeguidos, qnt_de_jogos_geral + 1):
-		jogosSelecionados = []
-		jogosSelecionados2 = []
-		for num_do_jogo in range(0, numJogosSeguidos):
-			jogosSelecionados.extend(jogo(jogos, num_jogo - num_do_jogo))
-		for num_do_jogo in range(0, numJogosSeguidos):
-			jogosSelecionados2.append(jogo(jogos, num_jogo - num_do_jogo))
-		
-		res = Set(jogosSelecionados)
-		
-		for jogoi in jogosSelecionados2:
-			res = res & Set(jogoi)
-		repeticoes_numeros_jogos.append(len(res))
-	return repeticoes_numeros_jogos
-
-def totalNumerosRepetidos(numRepetidos):
-	"""
-	Quantidade de numeros repetidos em uma sequencia de 2 jogos
-	"""
-	total_numeros_repetidos = {}
-	for quantidade in range(0, 7):
-		contador = 0
-		for num in numRepetidos:
-			if quantidade == num:
-				contador = contador + 1
-		total_numeros_repetidos[quantidade] = contador
-	return total_numeros_repetidos
-
-def listaDosUltimosJogos(jogos, qnt):
-	ultimo_concurso = int(len(jogos) / 6)
-	ultimosJogos = []
-	for num_jogo in range(0, qnt):
-		ultimosJogos.extend(jogo(jogos, ultimo_concurso - num_jogo))
-	return ultimosJogos
-
-def numeroDeJogos(jogos):
-	return len(jogos)/6
-
-def getQuadrante(numero):
-	"""
-	Funcao retorna em que quadrante do volante o numero se encontra
-	"""
-	if (numero <= 5):
-		quadrante = 1
-	numeroStr = str(numero)
-	if len(numeroStr) > 1:
-		if (numero <= 30 ):
-			if (int(numeroStr[1]) < 6) and (int(numeroStr[1]) != 0):
-				quadrante = 1
-			else:
-				quadrante = 2
-		if (numero <= 60 ) and (numero > 30 ):
-			if (int(numeroStr[1]) < 5) and (int(numeroStr[1]) != 0):
-				quadrante = 3
-			else:
-				quadrante = 4
-	return quadrante
-
+def getNumerosCentroVolante():
+	numeros = list(range(1,60))
+	numeros = list(set(numeros) - set(getNumerosBordaVolante()))
+	return numeros
