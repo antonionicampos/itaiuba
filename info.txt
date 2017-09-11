@@ -13,5 +13,6 @@ Preços:
 
 Bruno Notas:
 1. Analisar a qnt de repetições nos ultimos jogos dos números que historicamente mais sairam, pois aumentam a probabilidade deles sairem;
+2. Verificar qnts jogos se repetiram na historia..se nunca se repetiu considerar eliminar tds os jogos que ja sairam
 
 Antonioni Notas:
