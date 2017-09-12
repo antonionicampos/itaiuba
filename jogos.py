@@ -4,9 +4,9 @@ from openpyxl import load_workbook
 
 class Jogos:
 
-	def __init__(self, listaJogos=[], filename=''):
-		if filename != '': 
-			self.jogos = self.extrairJogosPlanilha(filename)
+	def __init__(self, listaJogos=[], fileName=''):
+		if fileName != '': 
+			self.jogos = self.extrairJogosPlanilha(fileName)
 		else:
 			self.jogos = listaJogos
 
