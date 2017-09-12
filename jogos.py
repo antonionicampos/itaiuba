@@ -17,6 +17,12 @@ class Jogos:
 			listaNum.extend(jogo.getNumeros())
 		return list(set(listaNum))
 
+	def getListaJogos(self):
+		listaJogos =[]
+		for jogo in self.jogos:
+			listaJogos.append(jogo.getNumeros())
+		return listaJogos
+
 	def addJogo(self, jogo):
 		self.jogos.append(jogo)
 
