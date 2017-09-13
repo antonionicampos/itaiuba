@@ -9,14 +9,12 @@ class Simulador:
 		self.historico = Jogos(fileName=fileName)
 		self.simuSorteios = []
 		self.simuHistorico = []
+		self._qntSorteios = qntSorteios
+		self.setApostas(apostas=apostas)
 		i = 0
-		self.volantes = []
-		if len(apostas.getSequenciaJogos()) >=1:
-			for jogo in apostas.getSequenciaJogos():
-				self.volantes.append(Volante(aposta=jogo))
 		for jogo in self.historico.getSequenciaJogos():
 			i = i + 1
-			if i >= (len(self.historico.getSequenciaJogos()) - qntSorteios):
+			if i >= (len(self.historico.getSequenciaJogos()) - self._qntSorteios):
 				self.simuSorteios.append(jogo)
 			else:
 				self.simuHistorico.append(jogo)
@@ -31,6 +29,12 @@ class Simulador:
 
 	def getVolantes(self):
 		return self.volantes
+
+	def setApostas(self, apostas):
+		self.volantes = []
+		if len(apostas.getSequenciaJogos()) >=1:
+			for jogo in apostas.getSequenciaJogos():
+				self.volantes.append(Volante(aposta=jogo))
 
 	def update(self, func=None):
 		tamanho_sorteios = len(self.simuSorteios.getSequenciaJogos())
