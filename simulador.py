@@ -1,6 +1,7 @@
 from jogo import Jogo
 from jogos import Jogos
 from volante import Volante
+import matplotlib.pyplot as plt
 
 class Simulador:
 
@@ -13,9 +14,9 @@ class Simulador:
 		if len(jogos.getSequenciaJogos()) >=1:
 			for jogo in jogos.getSequenciaJogos():
 				self.volantes.append(Volante(aposta=jogo))
-		for jogo in self.historico.getSequenciaJogos()[::-1]:
+		for jogo in self.historico.getSequenciaJogos():
 			i = i + 1
-			if i <= qntSorteios:
+			if i >= (len(self.historico.getSequenciaJogos()) - qntSorteios):
 				self.simuSorteios.append(jogo)
 			else:
 				self.simuHistorico.append(jogo)
@@ -30,3 +31,11 @@ class Simulador:
 
 	def getVolantes(self):
 		return self.volantes
+
+	def update(self):
+		tamanho_sorteios = len(self.simuSorteios.getSequenciaJogos())
+		if tamanho_sorteios > 1:
+			self.simuHistorico.addJogo(self.simuSorteios.getSequenciaJogos()[tamanho_sorteios-1])
+			self.simuSorteios.removeJogo(tamanho_sorteios-1)
+
+
