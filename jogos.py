@@ -25,6 +25,8 @@ class Jogos:
 
 	def addJogo(self, jogo):
 		self.jogos.append(jogo)
+	def removeJogo(self, id_jogo):
+		self.jogos.pop(id_jogo)
 
 	def getSequenciaJogos(self, numeroJogos='all', asc=True):
 		"""
